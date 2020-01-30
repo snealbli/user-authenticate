@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session(
 		{ 
-			secret: 'Qo?Up#CRe*O22me@rU8h7?ot&o_uBr9=', 
+			secret: 'its_a_secret', 
 			cookie: {
 				maxAge: 259200,	//30 days
 				secure: false
