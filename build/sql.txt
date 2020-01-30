@@ -14,4 +14,4 @@ CREATE TABLE users (
 	user_active BOOLEAN DEFAULT FALSE
 );
 
-GRANT ALL PRIVILEGES ON nealblim_com_test.users TO 'nb_com_auth'@'localhost';
+GRANT ALL PRIVILEGES ON 'nealblim_com_test'.'users' TO 'nb_com_auth'@'localhost';
