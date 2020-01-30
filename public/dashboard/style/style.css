@@ -1,0 +1,394 @@
+/* ╔═══════════════════════════════════════════════╦═════════════════════════╦══════════╗
+ * ║ CSS Modal Login/Signup Window                 ║ Created:   29 Nov. 2019 ║ v0.2.1.1 ║
+ * ║                                               ║ Last mod.: 17 Dec. 2019 ╚══════════╣
+ * ╠═══════════════════════════════════════════════╩════════════════════════════════════╣
+ * ║TO DO                                                                               ║
+ * ╠════════════════════════════════════════════════════════════════════════════════════╣
+ * ║ For the latest version of this snippet, report a bug, or to contribute, please     ║ 
+ * ║ visit:     github.com/snealbli/css-social-media-cube                               ║
+ * ╠════════════════════════════════════════════════════════════════════════════════════╣
+ * ║                             by Samuel 'teer' Neal-Blim                             ║
+ * ║                                                                                    ║
+ * ║                              Site: prog.nealblim.com                               ║
+ * ║                              Git:  github.com/snealbli                             ║
+ * ║                         JSfiddle:  jsfiddle.net/user/teeer                         ║
+ * ╠════════════════════════════════════════════════════════════════════════════════════╣
+ * ║ Licensed under the GNU GPL v3.0; see LICENSE in project source root folder.        ║
+ * ╚════════════════════════════════════════════════════════════════════════════════════╝
+ */
+@import url("./style2.css");
+	
+@media only screen and (orientation: landscape) {
+	html, body {
+        height: 100%;
+        width: auto;
+    }
+}
+	
+@media only screen and (orientation: portrait) {
+    html, body {
+        height: auto;
+        width: 100%;
+    }
+}
+
+* {
+	box-sizing: border-box;
+	
+	user-select:            none;   /* No text selection in this divs */
+    -moz-user-select:       none;
+    -ms-user-select:        none;
+    -o-user-select:         none;
+    -webkit-user-select:    none;
+   -webkit-touch-callout:   none;   /* iOS only */
+}
+
+html, body, body > div {
+	margin: 0;
+	padding: 0;
+}
+
+.modal-window-title h2 {
+	display: none;
+}
+
+#signin:target + div + div,
+#register:target + div {
+    display: grid;
+}
+
+#signin:target + div + div .modal-toggle-mode-a,
+#register:target + div .modal-toggle-mode-b {
+    display: block;
+}
+
+/**********  Border layout  **********/
+.border-layout {
+    align-content: center;
+    display: none;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 2fr auto 3fr;
+    grid-template-areas: 'n n n'
+                         'w c e'
+                         's s s';
+    justify-content: center;
+}
+
+.border-layout > div > a {
+	cursor: default;
+	display:inline-block;
+	height: 100%;
+	width: 100%;
+}
+    
+.border-north {
+    grid-area: n;
+}
+    
+.border-west {
+    grid-area: w;
+}
+    
+.border-center {
+    grid-area: c;
+    width: max-content;
+}
+    
+.border-east {
+    grid-area: e;
+}
+    
+.border-south {
+    grid-area: s;
+}
+
+/**********  Main menu **********/
+.prompt-button {
+    float: right;  
+}
+
+.top-dropdown-menu, 
+.top-dropdown-menu * {
+    margin: 0;
+    padding: 0;
+}
+
+.top-dropdown-menu ul {
+	font-family: 'Numans', sans-serif;
+	background-color: #333;
+    list-style-type: none;
+    overflow: hidden;
+}
+	
+.top-dropdown-menu li:not(.prompt-button) {
+    float: left;
+}
+	
+.top-dropdown-menu li a, .dropdown-menu-button {
+	color: white;
+    float: left;
+    text-align: center;
+	padding: 14px 16px;
+    text-decoration: none;
+}
+	
+.top-dropdown-menu li a:hover, .dropdown:hover .menu-button {
+    background-color: red;
+}
+	
+.top-dropdown-menu li.dropdown-menu-button{
+    display: inline-block;
+}
+	
+.dropdown-submenu-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+	
+.dropdown-submenu-content a {
+    color: black;
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-align: left;
+}
+	
+.dropdown-submenu-content a:hover {
+    background-color: #f1f1f1;
+}
+	
+.dropdown-submenu-content:hover .dropdown-submenu-content {
+    display: block;
+}
+	
+/*****  Login window  *****/
+.modal-container {
+    background-color: rgba(0,0,0,0.4);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.modal-window {
+	/*-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);*/
+
+	width: 18em;
+}
+
+.modal-window *:not(.fa) {
+    font-family: 'Helvetica Neue', Helvetica, Verdana, sans-serif;
+}
+
+.modal-window-buttons {
+    background-color: inherit;
+    display: block;
+    float: right;
+    height: 1.4em;
+    margin-left: -1.4em;
+    padding: 0;
+}
+
+.modal-window-buttons .link-button {
+    background-color: inherit;
+    border: none;
+    float: right;
+    font-size: 1em;
+    outline: none;
+    margin: 0;
+    padding: 0.2em 0.3em 0.2em 0.2em;
+}
+
+.modal-window-buttons .link-button i {
+    text-align: center;
+}
+
+.modal-window-buttons .link-button:hover {
+    background: #f00;
+}
+
+.modal-window .link-button,
+.modal-window input[type=button],
+.modal-window input[type=checkbox],
+.modal-window input[type=submit] {
+    cursor: pointer;
+}
+
+.modal-window input[type=submit] {
+	font-size: large;
+	margin-top: 1.2em;
+	width: 100%;
+}
+
+.modal-window .link-button {
+    text-decoration: none;
+}
+
+.modal-window .link-button:visited {
+    color: inherit;
+}
+
+.modal-window-button {
+    padding: 2px;
+}
+
+.modal-window-button:hover {
+    background: #f00;
+}
+
+.modal-window-content {
+	border: 1px solid black;
+    background: #fff;
+    -webkit-border-radius: 2em 0 2em 2em;
+    -moz-border-radius: 2em 0 2em 2em;
+    border-radius: 2em 0 2em 2em;
+    /*-webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;*/
+    display: block;
+    padding: 0.8em;
+    padding-bottom: 10%;
+    -webkit-transition-duration: 0.5s; /* Chrome, Safari, Opera */
+    transition-duration: 0.5s;
+}
+
+.modal-window-content > div {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.modal-window-banner {
+	background-image: url('../images/banner.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-border-radius: 2em 2em 0 0;
+    -moz-border-radius: 2em 2em 0 0;
+    border-radius: 2em 2em 0 0;
+    padding-bottom: 62.5%;
+    width: 100%;
+}
+
+.modal-window-form,
+.modal-window-social-login h3,
+.modal-window-content-footer > div {
+	display: none;
+}
+
+.modal-window-form label {
+    color: #7c8291;
+    float: left;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin: 0.333em 0.333em 0; 
+    text-align: left;
+}
+    
+.modal-window .fancy-input {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#edf3f9), to(#fff));
+    background-image: -webkit-linear-gradient(to top, #edf3f9, #fff);
+    background-image: -moz-linear-gradient(to top, #edf3f9, #fff);
+    background-image: -ms-linear-gradient(to top, #edf3f9, #fff);
+    background-image: -o-linear-gradient(to top, #edf3f9, #fff);
+    background-image: linear-gradient(to top, #edf3f9, #fff);
+    border: 1px solid;
+    border-color: #abbce8 #c3cae0 #b9c8ef;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.4);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.4);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.4);
+    color: #7988a3;
+    float: right;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    padding: 6px 5px;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
+    -webkit-transition: all 0.25s linear;
+    -moz-transition: all 0.25s linear;
+    transition: all 0.25s linear;
+    width: 100%;
+}
+
+.modal-window .fancy-input:focus {
+    border-color: #84c0ee;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 7px #96c7ec;
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 7px #96c7ec;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 7px #96c7ec;
+    color: #525864;
+    outline: none;
+}
+
+.modal-window-form small {
+	font-size: smallest;
+}
+
+.modal-form-input-table {
+	display: table;
+}
+
+.modal-form-input-row {
+    display: table-row;
+}
+
+.modal-form-input-row span {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.modal-window-content-footer {
+    height: 4em;
+    width: auto;
+}
+
+hr.fancy-divider {
+    background-image: linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    border: none;
+    color: #333;
+    height: 1px;
+    margin: 0.8em 0;
+    overflow: visible; /* For IE */
+    text-align: center;
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    top: -100px;
+    opacity: 0;
+  }
+  
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}
+
+/* Add animation (Standard syntax) */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        top: -100px;
+    }
+  
+    to {
+        opacity: 1;
+        top: 0px;
+    }
+}
+
+/*****  Social media cube  *****/
+.modal-window-social-login > div {
+    display: inline-block;
+}

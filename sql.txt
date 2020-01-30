@@ -1,0 +1,17 @@
+CREATE DATABASE nealblim_com_test;
+
+CREATE USER 'nb_com_auth'@'localhost' IDENTIFIED BY 'B+7etLp77phUXoZestet';
+
+CREATE TABLE users (
+	user_id INT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+	auth_type ENUM('email', 'facebook', 'git', 'google', 'linkedin', 'reddit', 'stackoverflow', 'twitter') NOT NULL,
+	user_login_key VARCHAR(256) NOT NULL,
+	user_pass VARBINARY(80),     
+	user_name VARCHAR(25),
+	user_alias VARCHAR(16) NOT NULL UNIQUE,
+	account_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	last_login TIMESTAMP,
+	user_active BOOLEAN DEFAULT FALSE
+);
+
+GRANT ALL PRIVILEGES ON nealblim_com_test.users TO 'nb_com_auth'@'localhost';

@@ -1,0 +1,11 @@
+1.  HTML aesthetic  
+        a.  Input:invalid border (https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
+2.  Match auth_type with auth (just in case)
+3.  Privacy/cookies message
+4.  Forgot password  
+5.  Email verification (https://medium.com/the-andela-way/how-to-implement-email-verification-feature-in-your-nodejs-app-using-express-sendgrid-sequelize-e5b255bf92a2)
+6.  Remember me (http://www.passportjs.org/packages/passport-remember-me/)
+7.  Name verification  
+8.  Steam (http://www.passportjs.org/packages/passport-steam/)
+9.  Instagram (http://www.passportjs.org/packages/passport-instagram/)
+10. Twitch (http://www.passportjs.org/packages/passport-twitchtv/)
