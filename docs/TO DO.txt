@@ -1,5 +1,6 @@
 1.  HTML aesthetic  
         a.  Input:invalid border (https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
+
 2.  Match auth_type with auth (just in case)
 3.  Privacy/cookies message
 4.  Forgot password  
