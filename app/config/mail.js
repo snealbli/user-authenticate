@@ -6,7 +6,7 @@
  * ║ For right now, just sends emails with temporary URL links (activation,    ║
  * ║ password reset).                                                          ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
- * ║ For the latest version of field.js, to report a bug, or to contribute,    ║ 
+ * ║ For the latest version of this, to report a bug, or to contribute, please ║ 
  * ║ visit:     github.com/snealbli/                                           ║
  * ║    or:     robot.nealblim.com/                                            ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
