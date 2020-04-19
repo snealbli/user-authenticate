@@ -1,0 +1,310 @@
+  <div class="app" id="home-view">
+    <header>
+      <div class="app-header fluid grid-container">
+        <div class="header-nav">
+          <div>
+            <nav>
+              <ul class="vertical menu align-right">
+                <li><a class="link-button" data-open="modal-form-user-auth" id="login-button">Login</a></li>
+                <li><a class="link-button" data-open="modal-form-user-auth" id="signup-button">Signup</a></li>
+              </ul>
+            </nav>
+          </div>
+          
+          <div>
+            <div class="target-link" id="login"></div>
+            <div class="target-link" id="signup"></div>
+            <div class="grid-container modal-window reveal toggleable" id="modal-form-user-auth" data-reveal>
+              <div class="close-button" data-close aria-label="Close modal">
+                <a aria-hidden="true" class="link-button" href="#">&times;</a>
+              </div>
+              <div class="modal-window-header">
+                <div class="modal-window-banner"></div>
+                <div class="modal-window-title">
+                  <div>
+                    <h3 class="modal-toggle-mode-a">Login</h3>
+                    <h3 class="modal-toggle-mode-b">Sign Up</h3>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="fancy-divider">
+                      
+              <div class="modal-window-body">
+                <form class="modal-window-form modal-toggle-mode-a" id="form-login" method="post" data-abide>
+                  <input type="hidden" id="form_name" name="form_name" value="home_login">
+                  <div class="align-center grid-x">
+                    <div class="grid-x cell small-12">
+                      <div class="cell small-12 medium-3">
+                        <label>Email:</label>
+                      </div>
+                      <div class="cell small-12 medium-9">
+                        <input type="text" name="user_email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" placeholder="address@example.com" required tabindex="1">
+                      </div>
+                    </div>
+                    <div class="grid-x cell small-12 align-middle">
+                      <div class="cell small-12 medium-3">
+                        <label for="user_pass">Password:</label>
+                      </div>
+                      <div class="input-group-field cell small-9 medium-7">
+                        <input type="password" class="input-group-field" name="user_pass" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[A-Z])(?=.*[!@#$%^&*=|;:'?.,\-\[\]{}\\()<>/]).{8,32}$" tabindex="2">
+                      </div>
+                      <div class="input-group-button cell small-3 medium-2" style="height: 100%; padding: 0; justify-content: center;">
+                        <a class="button" href="/forgot" style="font-size: small; padding: 0; width: 100%;">Forgot?</a>
+                      </div>
+                    </div>
+                    <div class="cell small-10" id="login-message"></div>
+                    <div class="cell small-12">
+                      <input type="submit" class="button large expanded" formaction="/login" id="submit-login" tabindex="4" value="Login">
+                    </div>
+                    <div class="cell small-12">
+                      <label for="persist-login"><input type="checkbox" checked="checked" id="persist-login" name="stay_logged_in" tabindex="5" value="stay_logged_in">Stay logged in
+                      </label>
+                    </div>
+                  </div>
+                </form>
+                
+                <form class="modal-window-form modal-toggle-mode-b" id="form-signup" method="post" data-abide>
+                  <input type="hidden" id="form_name" name="form_name" value="home_signup">
+                  <div class="align-center grid-x">
+                    <div class="grid-x cell small-12">
+                      <div class="cell small-12 medium-3">
+                        <label>Email:</label><br>
+                      </div>
+                      <div class="cell small-12 medium-9">
+                        <input type="text" id="modal-form-signup-email" name="user_email" placeholder="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required tabindex="1">
+                      </div>
+                    </div>
+                    <div class="grid-x cell small-12">
+                      <div class="cell small-12 medium-3">
+                        <label>Alias:</label><br>
+                      </div>
+                      <div class="cell small-12 medium-9">
+                        <input type="text" id="modal-form-signup-alias" name="user_alias" placeholder="alias" pattern="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+[^._]$" required tabindex="2">
+                      </div>
+                    </div>
+                    <div class="grid-x cell small-12">
+                      <div class="cell small-12 medium-3">
+                        <label>Name: <small>(optional)</small></label>
+                      </div>
+                      <div class="grid-x cell small-12 medium-9">
+                        <div class="cell medium-12 large-5">
+                          <input type="text" class="fancy-input" id="register-name-first" name="user_firstname" placeholder="first" tabindex="3">
+                        </div>
+                        <div class="cell medium-12 large-7">
+                          <input type="text" class="fancy-input" id="register-name-last" name="user_lastname" placeholder="last" tabindex="4">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="grid-x cell small-12">
+                      <div class="cell small-12 medium-3">
+                        <label for="user_pass1">Password:</label><br>
+                      </div>
+                      <div class="cell small-12 medium-9">
+                        <input type="password" class="fancy-input" id="register-password" name="user_pass1" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[A-Z])(?=.*[!@#$%^&*=|;:'?.,\-\[\]{}\\()<>/]).{8,32}$" required tabindex="5">
+                      </div>
+                    </div>
+                    <div class="grid-x cell small-12">
+                      <div  class="cell small-12 medium-3">
+                        <label for="user_pass2">Password: <small>(confirm)</small></label>
+                      </div>
+                      <div class="cell small-12 medium-9">
+                        <input type="password" class="fancy-input" id="register-password" name="user_pass2" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[A-Z])(?=.*[!@#$%^&*=|;:'?.,\-\[\]{}\\()<>/]).{8,32}$" required tabindex="6">
+                      </div>
+                    </div>
+                    <div class="cell small-10" id="signup-message"></div>
+                    <div class="grid-x cell small-12">
+                      <div class="cell small-12">
+                        <input type="submit" class="button large expanded" tabindex="7" value="Sign Up">
+                      </div>
+                      <div class="cell small-12">
+                        <label for="signup_email_subscribe">
+                          <input type="checkbox" checked="checked" id="signup_email_subscribe" name="email_subscribe" tabindex="8" value="stay_logged_in">Subscribe to email updates
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+  
+                <div class="modal-window-social">
+                  <div>
+                    <h4 class="modal-toggle-mode-a">Sign In with</h4>
+                    <h4 class="modal-toggle-mode-b">Sign Up with</h4>
+                  </div>
+                  
+                  <form class="cube-container social-media-form">
+                    <button class="cube-container" id="social-media-cube-container">
+                      <span class="cube" id="social-media-menu">
+                        <span class="top-face github icon"><i class="fa fa-github"></i></span>
+                        <span class="front-face facebook icon"><i class="fa fa-facebook"></i></span>
+                        <span class="back-face linkedin icon"><i class="fa fa-linkedin"></i></span>
+                        <span class="left-face twitter icon"><i class="fa fa-twitter"></i></span>
+                        <span class="right-face google icon"><i class="fa fa-google"></i></span>
+                        <span class="bottom-face flipped random icon"></span>
+                      </span>
+                    </button>
+                  
+                    <div class="cube-menu-container" id="social-media-menu-container">
+                      <ul class="cube-menu">
+                        <li class="linkedin">
+                          <button class="cube-menu-item" id="linkedin-option" name="linked" type="submit"><i class="fa fa-linkedin"></i>Login with LinkedIn</button>
+                        </li>
+                  
+                        <li class="github">
+                          <button class="cube-menu-item" id="github-option" name="github" type="submit"><i class="fa fa-github"></i>Login with Git</button>
+                        </li>
+                  
+                        <li class="facebook">
+                          <button class="cube-menu-item" id="facebook-option" name="facebook" type="submit"><i class="fa fa-facebook"></i>Login with Facebook</button>
+                        </li>
+                  
+                        <li class="google">
+                          <button class="cube-menu-item" id="google-option" name="google" type="submit"><i class="fa fa-google"></i>Login with Google+</button>
+                        </li>
+                  
+                        <li class="twitter">
+                          <button class="cube-menu-item" id="twitter-option" name="twitter" type="submit"><i class="fa fa-twitter"></i>Login with Twitter</button>
+                        </li>
+                  
+                        <li class="stack-overflow">
+                          <button class="cube-menu-item" id="stack-overflow-option" name="stack-overflow" type="submit"><img>Login with Stack Overflow</button>
+                        </li>
+                  
+                        <li class="reddit">
+                          <button class="cube-menu-item" id="reddit-option" name="reddit" type="submit"><img>Login with Reddit</button>
+                        </li>
+                      </ul>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              
+              <hr class="fancy-divider">
+              
+              <div class="modal-window-footer">          
+                <div class="modal-toggle-mode-a">
+                  <h4>Dont have an account?</h4>
+                  <span><a class="fancy-input link-button" href="#register">Sign Up!</a></span>
+                  <span><small>It's super easy!</small></span>
+                </div>
+                
+                <div class="modal-toggle-mode-b">
+                  <h4>Already have an account?</h4>
+                  <span><a class="fancy-input link-button" href="#signin">Sign In</a></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </header>
+      
+    <main>
+      <div class="app-body">
+      </div>
+    </main>
+        
+    <footer class="marketing-site-footer">
+      <div class="app-footer">
+        <div class="cell-auto">
+          <div class="grid-x grid-padding-x align-center footer-main-body">
+            <div class="small-1 medium-2 large-2">
+              <h4>Yeti Snowcone</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita dolorem accusantium architecto id quidem, itaque nesciunt quam ducimus atque.</p>
+              <ul class="menu marketing-site-footer-menu-social simple">
+                 <li><a href="#"><i class="fa fa-youtube-square" aria-hidden="true"></i></a></li>
+                 <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                 <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+            
+            <div class="small-1 medium-2 large-2 marketing-site-footer-contact">
+              <h4 class="marketing-site-footer-title">Contact Info</h4>
+              <div class="grid-x grid-margin-x">
+                <div class="cell auto">
+                  <div>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  </div>
+                  <div>
+                    <p>100 W Rincon<br>San Francisco, CA 94015</p>
+                  </div>
+                </div>
+                <div class="cell auto">
+                  <div>
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                  </div>
+                  <div>
+                    <p>1 (800) 555-5555</p>
+                  </div>
+                </div>
+                <div class="cell auto">
+                  <div>
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                  </div>
+                  <div>
+                    <p>yetirules@fakeemail.com</p>
+                  </div>
+                </div>
+             </div>
+            </div>
+            
+            <div class="small-1 medium-2">
+              <h4 class=" ">Instagram</h4>
+              <div class="grid-x grid-padding-x small-up-3 medium-up-2">
+                <div class="cell small-shrink">
+                  <img src="https://placehold.it/75" alt="" />
+                </div>
+                <div class="cell small-shrink">
+                  <img src="https://placehold.it/75" alt="" />
+                </div>
+                <div class="cell small-shrink">
+                  <img src="https://placehold.it/75" alt="" />
+                </div>
+                <div class="cell small-shrink">
+                  <img src="https://placehold.it/75" alt="" />
+                </div>
+                <div class="cell small-shrink">
+                  <img src="https://placehold.it/75" alt="" />
+                </div>
+                <div class="cell small-shrink">
+                  <img src="https://placehold.it/75" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+        <div class="cell-auto">
+          <div class="cell shrink footer top-bar">
+            <div class="cell top-bar-left">
+              <p>&copy; 2017 No rights reserved</p>
+            </div>
+            <div class="cell top-bar-right">
+              <ul class="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Works</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+       <!-- <div id="js-gdpr-consent-banner" class="p8 ff-sans ps-fixed b0 l0 r0 z-banner" role="banner" aria-hidden="false" style="background-color: #3b4045; color: white;"> 
+    <div class="wmx8 mx-auto grid grid__center" role="alertdialog" aria-describedby="notice-message">
+        <div class="grid--cell mr12" aria-label="notice-message">
+            <p class="mb0 lh-lg">
+                By using our site, you acknowledge that you have read and understand our <a class="s-link s-link__inherit td-underline fc-white" target="_blank" href="https://stackoverflow.com/legal/cookie-policy">Cookie Policy</a>, <a class="s-link s-link__inherit td-underline fc-white" target="_blank" href="https://stackoverflow.com/legal/privacy-policy">Privacy Policy</a>, and our <a class="s-link s-link__inherit td-underline fc-white" target="_blank" href="https://stackoverflow.com/legal/terms-of-service/public">Terms of Service</a>.
+            </p>
+        </div>
+        <div class="grid--cell">
+            <a class="s-btn s-btn__muted s-btn__icon js-notice-close" aria-label="notice-dismiss">
+                <svg aria-hidden="true" class="svg-icon iconClear" width="18" height="18" viewBox="0 0 18 18"><path d="M15 4.41L13.59 3 9 7.59 4.41 3 3 4.41 7.59 9 3 13.59 4.41 15 9 10.41 13.59 15 15 13.59 10.41 9 15 4.41z"></path></svg>
+            </a>
+        </div>
+    </div>
+  </div> -->
+    </footer>
+  </div>

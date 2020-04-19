@@ -1,0 +1,15 @@
+  <div class="app">  	  
+  	<div class="app-body">
+  	  <main>
+        <div class="hero-full-screen" style="background: url('{{bgimage}}') center center no-repeat;">
+          <div class="middle-content-section">
+            {{> (portal) }}
+
+            {{#if showButton}}
+              <button class="button large">{{buttonText}}</button>
+            {{/if}}
+          </div>
+        </div>
+  	  </main>
+    </div>
+  </div>

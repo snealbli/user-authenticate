@@ -1,0 +1,61 @@
+  <div class="app">
+    <div class="app-body">
+      <main>
+        <div class="large reveal initial-open-reveal" id="welcome-new-user-modal" data-close-on-click="false" data-close-on-esc="false" data-overlay="false" data-reveal>
+          <form>
+            <div class="orbit" id="welcome-new-user-orbit" role="region" aria-label="New user settings" data-orbit data-auto-play="false">
+              <div class="orbit-wrapper">
+                <div class="orbit-controls">
+                  <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+                  <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+                </div>
+                <ul class="orbit-container">
+                  <li class="is-active orbit-slide">
+                    <div>
+                      <h1>Welcome!</h1>
+                      <p>To make your time here more enjoyable</p>
+                    </div>
+                  </li>
+                  <li class="orbit-slide">
+
+                  </li>
+                  <li class="orbit-slide">
+                    <figure class="orbit-figure">
+                      <img class="orbit-image" src="https://placehold.it/1200x600/777?text=Slide-3" alt="Space">
+                      <figcaption class="orbit-caption">Encapsulating</figcaption>
+                    </figure>
+                  </li>
+                  <li class="orbit-slide">
+                    <figure class="orbit-figure">
+                      <img class="orbit-image" src="https://placehold.it/1200x600/666&text=Slide-4" alt="Space">
+                      <figcaption class="orbit-caption">Outta This World</figcaption>
+                    </figure>
+                  </li>
+                </ul>
+              </div>
+              
+              <div>
+                <nav aria-label="You are here:" role="navigation">
+                  <ul class="breadcrumbs">
+                    <li><a href="#">Additional Info</a></li>
+                    <li><a href="#">Social</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Features</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+            <div style="text-align: center;">
+              <input type="submit" class="button large" formaction="/dashboard" tabindex="9" class="button large" value="Skip (use defaults)">
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script>
+  $('.breadcrumb-counter-nav-item').click(function () {
+      $('.breadcrumb-counter-nav-item').removeClass('current');
+      $(this).addClass('current');
+    });
+  </script> 

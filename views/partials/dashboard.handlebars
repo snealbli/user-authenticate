@@ -1,0 +1,259 @@
+    <div class="app-header fluid grid-container">
+      <header>
+        <div class="header-nav">          
+          <div>
+            <div class="modal-window reveal" id="modal-form-reset-password" data-reveal>
+              <div class="close-button" data-close aria-label="Close modal">
+                <a aria-hidden="true" class="link-button" href="#">&times;</a>
+              </div>
+              <div class="modal-window-header">
+                <div class="modal-window-banner"></div>
+                <div class="modal-window-title">
+                  <div>
+                    <h3>Reset Password</h3>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="fancy-divider">
+                      
+              <div class="grid-container modal-window-body">
+                <form class="modal-window-form" method="post" data-abide>
+                  <div class="grid-x">
+                    <div class="grid-x cell small-12">
+                      <div class="cell small-12 medium-3">
+                        <label for="user_pass1">Password:</label><br>
+                      </div>
+                      <div class="cell small-12 medium-9">
+                        <input type="password" class="fancy-input" id="register-password" name="user_pass1" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[A-Z])(?=.*[!@#$%^&*=|;:'/?.,\-\[\]\{\}\\\(\)\<\>]).{8,32}$" required tabindex="1">
+                      </div>
+                    </div>
+                    <div class="grid-x cell small-12">
+                      <div  class="cell small-12 medium-3">
+                        <label for="user_pass2">Password: <small>(confirm)</small></label>
+                      </div>
+                      <div class="cell small-12 medium-9">
+                        <input type="password" class="fancy-input" id="register-password" name="user_pass2" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[A-Z])(?=.*[!@#$%^&*=|;:'/?.,\-\[\]\{\}\\\(\)\<\>]).{8,32}$" required tabindex="2">
+                      </div>
+                    </div>
+                  <!-- {{#if message}}
+                    <div class="alert callout">
+                      <div {{#unless invalid_password_mismatch}}class="hide"{{/unless}}>
+                        <b>Password mismatch!</b>
+                      </div>
+                      <div>
+                        <small>Passwords must match!</small>
+                      </div>
+                    </div>
+                  {{/if}} -->
+                    <div class="grid-x cell small-12">
+                      <div class="cell small-12">
+                        <input type="submit" class="button large expanded" formaction="/reset" tabindex="3" value="Change Password">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div> 
+    
+    <div class="app-dashboard shrink-medium">
+      <div class="row expanded app-dashboard-top-nav-bar">
+        <div class="columns medium-2">
+          <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button>
+          <a class="app-dashboard-logo">Hello {{alias}}!</a>
+        </div>
+        <div class="columns shrink app-dashboard-top-bar-actions">
+          <ul>
+            <li><a href="/logout" class="button hollow">Logout</a></li>
+            <li><a data-toggle="modal-form-reset-password" href="#" id="button-prompt-reset-password" class="button hollow">Reset</a></li>
+          </ul>
+        </div>
+      </div>
+    
+      <div class="app-dashboard-body off-canvas-wrapper">
+        <div id="app-dashboard-sidebar" class="app-dashboard-sidebar position-left off-canvas off-canvas-absolute reveal-for-medium" data-off-canvas>
+          <div class="app-dashboard-sidebar-title-area">
+            <div class="app-dashboard-close-sidebar">
+              <h3 class="app-dashboard-sidebar-block-title">Items</h3>
+              <!-- Close button -->
+              <button id="close-sidebar" data-app-dashboard-toggle-shrink class="app-dashboard-sidebar-close-button show-for-medium" aria-label="Close menu" type="button">
+                <span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-left"></i></a></span>
+              </button>
+            </div>
+            <div class="app-dashboard-open-sidebar">
+              <button id="open-sidebar" data-app-dashboard-toggle-shrink class="app-dashboard-open-sidebar-button show-for-medium" aria-label="open menu" type="button">
+                <span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-right"></i></a></span>
+              </button>
+            </div>
+          </div>
+          
+          <div class="app-dashboard-sidebar-inner">
+            <ul class="menu vertical">
+              <li><a href="#" class="is-active">
+                <i class="large fa fa-institution"></i><span class="app-dashboard-sidebar-text">Buildings</span>
+              </a></li>
+              <li><a>
+                <i class="large fa fa-hourglass"></i><span class="app-dashboard-sidebar-text">Time</span>
+              </a></li>
+              <li><a>
+                <i class="large fa fa-industry"></i><span class="app-dashboard-sidebar-text">Industry</span>
+              </a></li>
+              <li><a href="#" class="is-active">
+                <i class="large fa fa-institution"></i><span class="app-dashboard-sidebar-text">Buildings</span>
+              </a></li>
+              <li><a>
+                <i class="large fa fa-hourglass"></i><span class="app-dashboard-sidebar-text">Time</span>
+              </a></li>
+              <li><a>
+                <i class="large fa fa-industry"></i><span class="app-dashboard-sidebar-text">Industry</span>
+              </a></li>
+              <li><a href="#" class="is-active">
+                <i class="large fa fa-institution"></i><span class="app-dashboard-sidebar-text">Buildings</span>
+              </a></li>
+              <li><a>
+                <i class="large fa fa-hourglass"></i><span class="app-dashboard-sidebar-text">Time</span>
+              </a></li>
+              <li><a>
+                <i class="large fa fa-industry"></i><span class="app-dashboard-sidebar-text">Industry</span>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+    
+        <div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
+          <h2 class="text-center">Lorem Ipsum</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus blandit ligula eget est feugiat viverra. Duis a arcu laoreet, rhoncus libero imperdiet, placerat velit. Vestibulum euismod mi et ornare sodales. Donec efficitur mattis blandit. Proin in massa elit. Praesent malesuada iaculis nisl, a venenatis dui. Nullam venenatis tincidunt placerat. Suspendisse egestas urna a aliquet pretium.</p>
+    
+          <p>Curabitur ullamcorper mollis lobortis. Integer a scelerisque turpis, sed dictum lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam quis placerat sem. Suspendisse vulputate, leo ac sollicitudin lobortis, dui dui blandit justo, ut molestie justo sem in ipsum. Vestibulum convallis ex ac est tristique tincidunt. Vivamus dui dui, viverra et urna vitae, aliquam facilisis erat. Nam lorem nibh, elementum semper commodo at, fermentum quis justo. Donec finibus sapien eget scelerisque rhoncus. Nullam at nisi sed mi congue vestibulum. Vivamus nec scelerisque orci, vel fringilla nisi. Sed dictum, leo in consectetur porttitor, quam nibh aliquet nisi, in pulvinar sapien ante id dui. Aliquam massa nisl, auctor eget nisl in, faucibus gravida lectus. Nullam mattis orci at turpis finibus egestas. Nam vitae lorem accumsan, tempus lectus vitae, rutrum diam. Integer pulvinar placerat magna aliquam scelerisque.</p>
+    
+          <p>Duis consectetur magna velit, nec porttitor velit fermentum pulvinar. Duis varius justo eu varius pellentesque. Curabitur aliquet velit mauris, quis aliquam leo pharetra in. Integer rhoncus ut dui in rhoncus. Maecenas nec libero neque. Duis ac lacus at justo ullamcorper efficitur. Praesent ornare urna ante. Aliquam dapibus posuere nisl sit amet vestibulum. Quisque dapibus iaculis justo non egestas. Curabitur interdum semper justo, eget condimentum orci bibendum nec.</p>
+    
+          <p>Vivamus pharetra massa non risus sollicitudin iaculis. Donec semper finibus hendrerit. Nam ut volutpat mauris, sit amet molestie nisi. Curabitur ac nisi urna. Nulla id turpis nec dui ornare tempor in ac justo. Cras quis cursus nisi. Donec vel pellentesque ante. Maecenas non nisi risus. Praesent posuere scelerisque varius. Cras vitae mollis quam. Etiam ut dui massa. Etiam mattis aliquam enim, eget facilisis erat elementum eu. Proin et lorem volutpat, pretium massa a, venenatis mi. Suspendisse quam orci, feugiat eget suscipit ac, vehicula a ante. Nam ut mauris at tortor cursus interdum.</p>
+    
+          <p>Nullam hendrerit tincidunt risus. Sed nec nibh vel nibh euismod lobortis sed a sem. Nulla nec libero dolor. Pellentesque non sodales orci. Phasellus odio ligula, varius non orci ac, fermentum pulvinar nibh. Aliquam erat volutpat. Curabitur vehicula varius porttitor. Integer purus sapien, placerat sodales eros et, interdum vestibulum sem. Duis faucibus felis vitae augue ultricies, aliquet tempor orci vestibulum. Duis eu justo mi. Praesent feugiat, ante interdum fringilla auctor, ex nibh aliquet neque, sed feugiat tellus tortor non dui. Suspendisse potenti. Aliquam fringilla sapien felis, at faucibus justo interdum congue.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Multi-level Accordion File Menu
+  <ul class="multilevel-accordion-menu vertical menu" data-accordion-menu>
+    <li>
+      <a href="#">Item 1</a>
+      <ul class="menu vertical sublevel-1">
+        <li>
+          <a href="#">Sub-item 1</a>
+          <ul class="menu vertical sublevel-2">
+            <li><a class="subitem" href="#">Thing 1</a></li>
+            <li><a class="subitem" href="#">Thing 2</a></li>
+            <li><a class="subitem" href="#">Thing 3</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Sub-item 2</a>
+          <ul class="menu vertical sublevel-2">
+            <li>
+              <a href="#">Super-sub-item 1</a>
+              <ul class="menu vertical sublevel-3">
+                <li><a class="subitem" href="#">Thing 1</a></li>
+                <li><a class="subitem" href="#">Thing 2</a></li>
+              </ul>
+            </li>
+            <li><a class="subitem" href="#">Thing 2</a></li>
+          </ul>
+        </li>
+        <li><a class="subitem" href="#">Thing 1</a></li>
+        <li><a class="subitem" href="#">Thing 2</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">Item 2</a>
+      <ul class="menu vertical sublevel-1">
+        <li><a class="subitem" href="#">Thing 1</a></li>
+        <li><a class="subitem" href="#">Thing 2</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">Item 3</a>
+      <ul class="menu vertical sublevel-1">
+        <li><a class="subitem" href="#">Thing 1</a></li>
+        <li><a class="subitem" href="#">Thing 2</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">Item 4</a>
+      <ul class="menu vertical sublevel-1">
+        <li>
+          <a href="#">Sub-item 3</a>
+          <ul class="menu vertical sublevel-2">
+            <li><a class="subitem" href="#">Thing 1</a></li>
+            <li><a class="subitem" href="#">Thing 2</a></li>
+          </ul>
+        </li>
+        <li><a class="subitem" href="#">Thing 1</a></li>
+        <li><a class="subitem" href="#">Thing 2</a></li>
+      </ul>
+    </li>
+  </ul> -->
+  
+  <!-- Toggle switches
+  <div class="callout" id="switch-toggle-all">
+  
+    <div class="switch-toggle-wrapper">
+      <div class="switch">
+        <input class="switch-input" id="exampleSwitch1" type="checkbox" name="exampleSwitch" data-toggle-all>
+        <label class="switch-paddle" for="exampleSwitch1">
+          <span class="show-for-sr">Toggle All</span>
+        </label>
+      </div>
+      <span>Toggle All</span>
+    </div>
+  
+    <hr />
+  
+    <div class="switch-toggle-wrapper">
+      <div class="switch">
+        <input class="switch-input" id="exampleSwitch2" type="checkbox" name="exampleSwitch2">
+        <label class="switch-paddle" for="exampleSwitch2">
+          <span class="show-for-sr">Automatic Updates</span>
+        </label>
+      </div>
+      <span>Automatic Updates</span>
+    </div>
+  
+    <div class="switch-toggle-wrapper">
+      <div class="switch">
+        <input class="switch-input" id="exampleSwitch3" type="checkbox" name="exampleSwitch3">
+        <label class="switch-paddle" for="exampleSwitch3">
+          <span class="show-for-sr">Sync Daily</span>
+        </label>
+      </div>
+      <span>Sync Daily</span>
+    </div>
+  
+    <div class="switch-toggle-wrapper">
+      <div class="switch">
+        <input class="switch-input" id="exampleSwitch4" type="checkbox" name="exampleSwitch4">
+        <label class="switch-paddle" for="exampleSwitch4">
+          <span class="show-for-sr">Location</span>
+        </label>
+      </div>
+      <span>Location</span>
+    </div>
+  
+    <div class="switch-toggle-wrapper">
+      <div class="switch">
+        <input class="switch-input" id="exampleSwitch5" type="checkbox" name="exampleSwitch5">
+        <label class="switch-paddle" for="exampleSwitch5">
+          <span class="show-for-sr">push notifications</span>
+        </label>
+      </div>
+      <span>Push Notifications</span>
+    </div>
+  
+  </div> -->
+  <script>$('[data-app-dashboard-toggle-shrink]').on('click',function(e){e.preventDefault();$(this).parents('.app-dashboard').toggleClass('shrink-medium').toggleClass('shrink-large')});</script>
