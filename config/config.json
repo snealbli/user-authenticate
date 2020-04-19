@@ -1,0 +1,43 @@
+{
+    "development": {
+ 
+        "username": "nb_com_auth",
+ 
+        "password": "drowssap321",
+ 
+        "database": "nealblim_com_dev",
+ 
+        "host": "localhost",
+ 
+        "dialect": "mysql"
+ 
+    },
+ 
+    "testing": {
+ 
+        "username": "nb_com_test",
+ 
+        "password": "drowssap321",
+ 
+        "database": "nealblim_com_dev",
+ 
+        "host": "localhost",
+ 
+        "dialect": "mysql"
+ 
+    },
+ 
+    "production": {
+ 
+        "username": "",
+ 
+        "password": null,
+ 
+        "database": "",
+ 
+        "host": "127.0.0.1",
+ 
+        "dialect": "mysql"
+    }
+ 
+}
