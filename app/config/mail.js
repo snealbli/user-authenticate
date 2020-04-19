@@ -13,8 +13,8 @@
  * ║                         by Samuel 'teer' Neal-Blim                        ║
  * ║                                                                           ║
  * ║                          Site: prog.nealblim.com                          ║
- * ║                          Git:  github.com/snealbli                        ║
- * ║                      JSfiddle:  jsfiddle.net/user/teeer                   ║
+ * ║                         Git:   github.com/snealbli                        ║
+ * ║                     JSfiddle:  jsfiddle.net/user/teeer                    ║
  * ╚═══════════════════════════════════════════════════════════════════════════╝
  */
 const nodemailer        = require('nodemailer'),
