@@ -1,6 +1,6 @@
 /* ╔══════════════════════════════════════╦═════════════════════════╦══════════╗
- * ║ passport.js                          ║ Created:   11 Mar. 2020 ║ v1.0.0.1 ║
- * ║ (part of robot.nealblim.com user     ║ Last mod.: 19 Apr. 2020 ╚══════════╣
+ * ║ passport.js                          ║ Created:   11 Mar. 2020 ║ v1.0.0.2 ║
+ * ║ (part of robot.nealblim.com user     ║ Last mod.:  5 May  2020 ╚══════════╣
  * ║ authorization/web server)            ║                                    ║
  * ╠══════════════════════════════════════╩════════════════════════════════════╣
  * ║ Contains strategies for user authentication via Passport.js, as well as   ║
@@ -165,6 +165,12 @@ module.exports = (passport, user) => {
                 'login_key':    loginKey
             }
         }).then((user) => {
+            if (!user.user_active) {
+                return done(null, false, {
+                    message: 'Must activate account first!' 
+                });
+            }
+
             if (!user.isCorrectPassword(password)) {
                 return done(null, false, {
                     message: 'Incorrect password.' 
