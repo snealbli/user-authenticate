@@ -1,7 +1,8 @@
+/* Not real passwords! */
 {
     "development": {
  
-        "username": "nb_com_auth",
+        "username": "nb_com_dev",
  
         "password": "drowssap321",
  
@@ -19,7 +20,7 @@
  
         "password": "drowssap321",
  
-        "database": "nealblim_com_dev",
+        "database": "nealblim_com_test",
  
         "host": "localhost",
  
@@ -29,13 +30,13 @@
  
     "production": {
  
-        "username": "",
+        "username": "nb_com_auth",
  
-        "password": null,
+        "password": "lolnoway",
  
-        "database": "",
+        "database": "nealblim_com",
  
-        "host": "127.0.0.1",
+        "host": "localhost",
  
         "dialect": "mysql"
     }
