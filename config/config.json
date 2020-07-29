@@ -3,7 +3,7 @@
  
         "username": "nb_com_dev",
  
-        "password": "drowssap321",
+        "password": "redacted",
  
         "database": "nealblim_com_dev",
  
@@ -17,7 +17,7 @@
  
         "username": "nb_com_test",
  
-        "password": "drowssap321",
+        "password": "redacted",
  
         "database": "nealblim_com_test",
  
@@ -31,13 +31,12 @@
  
         "username": "nb_com_auth",
  
-        "password": "lolnoway",
+        "password": "redacted",
  
         "database": "nealblim_com",
  
         "host": "localhost",
  
-        "dialect": "mysql"
-    }
- 
+        "dialect": "mysql"    
+} 
 }
