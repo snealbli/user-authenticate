@@ -1,26 +1,47 @@
-/* ╔══════════════════════════════════════╦═════════════════════════╦══════════╗
- * ║ auth.js                              ║ Created:   11 Mar. 2020 ║ v1.0.0.1 ║
- * ║ (part of robot.nealblim.com user     ║ Last mod.: 19 Apr. 2020 ╚══════════╣ 
- * ║ authorization/web server)            ║                                    ║
- * ╠══════════════════════════════════════╩════════════════════════════════════╣
+/* ╔═════════════════════════════════════╦═════════════════════════╦═══════════╗
+ * ║ auth.js                             ║ Created:   11 Mar. 2020 ║ v1.0.0.9  ║
+ * ║                                     ║ Last mod.: 24 Jul. 2020 ╚═══════════╣
+ * ╠═════════════════════════════════════╩═════════════════════════════════════╣
+ * ║ Description:                                                              ║
  * ║ Express.js routing for robot.nealblim.com.  User authentication is done   ║
  * ║ via passport.js.                                                          ║
+ * ╠═══════════════════════════════════════════════════════════════════════════╣ 
+ * ║ File(s):                                                                  ║
+ * ║ /app/routes/auth.js                                                       ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
- * ║ For the latest version of this, to report a bug, or to contribute, please ║ 
- * ║ visit:     github.com/snealbli/                                           ║
- * ║    or:     robot.nealblim.com                                             ║
+ * ║ For the latest version of field.js, to report a bug, or to contribute,    ║ 
+ * ║ visit:     github.com/snealbli/nealblim.com                               ║
+ * ║    or:     code.nealblim.com/nealblim.com                                 ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
- * ║                         by Samuel 'teer' Neal-Blim                        ║
+ * ║                         by Samuel "teer" Neal-Blim                        ║
  * ║                                                                           ║
- * ║                          Site: prog.nealblim.com                          ║
+ * ║                          Site: nealblim.com                               ║
+ * ║                                code.nealblim.com                          ║ 
  * ║                         Git:   github.com/snealbli                        ║
  * ║                     JSfiddle:  jsfiddle.net/user/teeer                    ║
+ * ╠═══════════════════════════════════════════════════════════════════════════╣
+ * ║ Copyright (C) 2020  Samuel Neal-Blim                                      ║
+ * ║                                                                           ║
+ * ║ This program is free software: you can redistribute it and/or modify it   ║
+ * ║ under the terms of the GNU General Public License as published by the     ║
+ * ║ Free Software Foundation, either version 3 of the License, or (at your    ║
+ * ║  option) any later version.                                               ║
+ * ║                                                                           ║
+ * ║ This program is distributed in the hope that it will be useful, but       ║
+ * ║ WITHOUT ANY WARRANTY; without even the implied warranty of                ║
+ * ║ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General ║
+ * ║ Public License for more details.                                          ║
+ * ║                                                                           ║
+ * ║ You should have received a copy of the GNU General Public License along   ║
+ * ║ with this program.  If not, see https://www.gnu.org/licenses/gpl-3.0.html.║
  * ╚═══════════════════════════════════════════════════════════════════════════╝
  */
-const mail              = require('../config/mail'),    //Sending emails
-      verify            = require('../config/verify');	//User input validation
+'use strict';
 
-module.exports = function(app, passport) {
+const mail              = require('../config/mail'),        //Sending emails
+      validate          = require('../config/validate');    //User input validation
+
+module.exports = (app, passport) => {
     app.get('/', (req, res) => {
         res.render('home', {
             page_title: 'Seeing is Believing',
@@ -29,7 +50,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.post('/', function(req, res) {
+    app.post('/', (req, res) => {
     	if (req.body.form_name == "home_login") {
             res.redirect(307, '/login');
         } else if (req.body.form_name == "home_signup") {
@@ -73,6 +94,7 @@ module.exports = function(app, passport) {
                     bgimage:        'images/bg/confirm.jpg',
                     showButton:     true,
                     buttonText:     'Send Again',
+                    buttonURL:		req.hostname,
                     portal:         () => {
                                         return 'forgot';
                                     }
@@ -82,7 +104,6 @@ module.exports = function(app, passport) {
     });
     
     app.get('/login', (req, res) => {
-        console.log('WTF');
         res.send();        //TO DO AJAX
     });
     
@@ -100,10 +121,10 @@ module.exports = function(app, passport) {
     
     app.post('/reset', isLoggedIn, (req, res) => {
         var errMessage;
-        if (errMessage = verify.evaluatePasswordInput(req.body.user_pass1, req.body.user_pass2)) {
+        if (errMessage = validate.evaluatePasswordInput(req.body.user_pass1, req.body.user_pass2)) {
             console.log("Error: " + errMessage);        //TO DO LOG
         } else {
-            req.user.login_pass = req.body.user_pass1;
+            req.user.user_password = req.body.user_pass1;
             req.user.save().then(() => {
                 return res.redirect('/dashboard');
             });
@@ -111,7 +132,6 @@ module.exports = function(app, passport) {
     });
     
     app.get('/signup', (req, res) => {
-                 console.log("A");
         res.render('home', {
             page_title: 'Seeing is Believing',
             inc_style: true,
@@ -140,6 +160,7 @@ module.exports = function(app, passport) {
             bgimage: 'https://robot.nealblim.com/www/images/bg/confirm.jpg',
             showButton: true,
             buttonText: 'Resend',
+            buttonLink: '',
             portal: () => {
                  return 'confirm';
             }
