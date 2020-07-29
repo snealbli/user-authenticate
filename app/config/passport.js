@@ -1,38 +1,59 @@
-/* ╔══════════════════════════════════════╦═════════════════════════╦══════════╗
- * ║ passport.js                          ║ Created:   11 Mar. 2020 ║ v1.0.0.2 ║
- * ║ (part of robot.nealblim.com user     ║ Last mod.:  5 May  2020 ╚══════════╣
- * ║ authorization/web server)            ║                                    ║
- * ╠══════════════════════════════════════╩════════════════════════════════════╣
+/* ╔═════════════════════════════════════╦═════════════════════════╦═══════════╗
+ * ║ passport.js                         ║ Created:   11 Mar. 2020 ║ v1.0.0.9  ║
+ * ║                                     ║ Last mod.: 24 Jul. 2020 ╚═══════════╣
+ * ╠═════════════════════════════════════╩═════════════════════════════════════╣
+ * ║ Description:                                                              ║
  * ║ Contains strategies for user authentication via Passport.js, as well as   ║
  * ║ authentication in the event of account activation or forgotten password.  ║
  * ║                                                                           ║
  * ║ Coming soon: social media logins (Facebook, Twitter, Google, and more).   ║
+ * ╠═══════════════════════════════════════════════════════════════════════════╣ 
+ * ║ File(s):                                                                  ║
+ * ║ /app/config/passport.js                                                   ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
- * ║ For the latest version of this, to report a bug, or to contribute, please ║ 
- * ║ visit:     github.com/snealbli/                                           ║
- * ║    or:     robot.nealblim.com                                             ║
+ * ║ For the latest version of field.js, to report a bug, or to contribute,    ║ 
+ * ║ visit:     github.com/snealbli/nealblim.com                               ║
+ * ║    or:     code.nealblim.com/nealblim.com                                 ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
- * ║                         by Samuel 'teer' Neal-Blim                        ║
+ * ║                         by Samuel "teer" Neal-Blim                        ║
  * ║                                                                           ║
- * ║                          Site: prog.nealblim.com                          ║
+ * ║                          Site: nealblim.com                               ║
+ * ║                                code.nealblim.com                          ║ 
  * ║                         Git:   github.com/snealbli                        ║
  * ║                     JSfiddle:  jsfiddle.net/user/teeer                    ║
+ * ╠═══════════════════════════════════════════════════════════════════════════╣
+ * ║ Copyright (C) 2020  Samuel Neal-Blim                                      ║
+ * ║                                                                           ║
+ * ║ This program is free software: you can redistribute it and/or modify it   ║
+ * ║ under the terms of the GNU General Public License as published by the     ║
+ * ║ Free Software Foundation, either version 3 of the License, or (at your    ║
+ * ║  option) any later version.                                               ║
+ * ║                                                                           ║
+ * ║ This program is distributed in the hope that it will be useful, but       ║
+ * ║ WITHOUT ANY WARRANTY; without even the implied warranty of                ║
+ * ║ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General ║
+ * ║ Public License for more details.                                          ║
+ * ║                                                                           ║
+ * ║ You should have received a copy of the GNU General Public License along   ║
+ * ║ with this program.  If not, see https://www.gnu.org/licenses/gpl-3.0.html.║
  * ╚═══════════════════════════════════════════════════════════════════════════╝
  */
+'use strict';
+
 const jwt               = require('jsonwebtoken'),
       LocalStrategy     = require('passport-local').Strategy,
       CustomStrategy    = require('passport-custom').Strategy,
       Sequelize         = require('sequelize'),
       db                = require('../models/index'),
-      verify            = require('./verify'),
-      mail              = require('../config/mail');
+      validate          = require('./validate'),
+      mail              = require('./mail');
 
 module.exports = (passport, user) => {
     var User             = user,
-        DynamicURL      = db['dynamic_url'],
+        TemporaryURL     = db['temporary_url'],
 
-    //Render a user's display name, either as <first> 'alias' <last>, or
-    //  just <alias> if either one or no names were submitted
+    // Render a user's display name, either as <first> 'alias' <last>, or
+    // just <alias> if either one or no names were submitted
     getDisplayName = (alias, first, last) => {
         var name = alias;
         
@@ -49,27 +70,27 @@ module.exports = (passport, user) => {
     passport.serializeUser((obj, done) => {
           if (obj instanceof User) {
               done(null, { id: obj.id, type: 'User' });
-          } else {
-              done(null, { id: obj.id, type: 'DynamicURL' });
+          } else if (obj instanceof TemporaryURL) {
+              done(null, { id: obj.id, type: 'TemporaryURL' });
           }
     });
 
     passport.deserializeUser((obj, done) => {
         if (obj.type === 'User') {
             User.findByPk(obj.id).then((user) => done(null, user));
-        } else {
-            DynamicURL.findByPk(obj.id).then((dynamicURL) => done(null, dynamicURL));
+        } else if (obj.type === 'TemporaryURL') {
+        	TemporaryURL.findByPk(obj.id).then((temporaryURL) => done(null, temporaryURL));
         }
     });
     
     //Activate account
     passport.use('user-activate-account', new CustomStrategy((req, done) => {
-        DynamicURL.findOne({
+    	TemporaryURL.findOne({
             where: { 
                 'url':    req.query.link
             }
-        }).then(function(dynamic_url) {
-            if (!dynamic_url) {
+        }).then(function(temporary_url) {
+            if (!temporary_url) {
                 return done(null, false, { 
                     message: "Invalid URL."
                 });
@@ -77,16 +98,16 @@ module.exports = (passport, user) => {
             
             User.findOne({
                 where: { 
-                    'id':    dynamic_url.id
+                    'id':    temporary_url.id
                 }
             }).then((user) => {
                 user.update({
                     user_active: true, 
                     last_login: Date.now() 
                 }).then(() => {
-                    DynamicURL.destroy({
+                	TemporaryURL.destroy({
                         where: {
-                            id:  dynamic_url.id
+                            id:  temporary_url.id
                         }
                     }).then((deleted) => {
                         if(!deleted) {
@@ -110,13 +131,13 @@ module.exports = (passport, user) => {
     
     //If given valid token (temporary URL) display password dialog
     passport.use('user-forgot-password', new CustomStrategy((req, done) => {
-        DynamicURL.findOne({
+    	TemporaryURL.findOne({
             where: {
                 url:    req.query.link 
             }
-        }).then((dynamic_url) => {           
-            if (dynamic_url) {
-                if (dynamic_url.expiration_time >= Date.now()) {
+        }).then((temporary_url) => {           
+            if (temporary_url) {
+                if (temporary_url.expiration_time >= Date.now()) {
                     return done(null, false, { 
                         message: 'URL expired!'
                     });
@@ -124,15 +145,16 @@ module.exports = (passport, user) => {
                 
                 User.findOne({
                     where: { 
-                        'id':     dynamic_url.id    
+                        'id':     temporary_url.id    
                     }
                 }).then((user) => {
-                	DynamicURL.destroy({
+                	
+                	
+                	TemporaryURL.destroy({
                         where: {
-                            id:  dynamic_url.id
+                            id:  temporary_url.id
                         }
-                    }).then((deleted) => {                        
-                        console.log(7);
+                    }).then((deleted) => {
                         if (deleted) {
                         	return done(null, user);
                         }
@@ -159,21 +181,21 @@ module.exports = (passport, user) => {
         usernameField: 'user_email',
         passwordField: 'user_pass',
         passReqToCallback: true
-    }, function(req, loginKey, password, done) {
+    }, function(req, userEmail, userPassword, done) {
         User.findOne({
             where: { 
-                'login_key':    loginKey
+                'user_email':    userEmail
             }
         }).then((user) => {
+            if (!user.isCorrectPassword(userPassword)) {
+                return done(null, false, {
+                    message: 'Incorrect password.' 
+                });
+            }
+            
             if (!user.user_active) {
                 return done(null, false, {
                     message: 'Must activate account first!' 
-                });
-            }
-
-            if (!user.isCorrectPassword(password)) {
-                return done(null, false, {
-                    message: 'Incorrect password.' 
                 });
             }
             
@@ -184,7 +206,7 @@ module.exports = (passport, user) => {
             return done(null, user);
         }).catch(() => {
             return done(null, false, { 
-                message: 'Incorrect username.' 
+                message: 'Username not found.  Incorrect username.' 
             });
         });
     }));
@@ -195,54 +217,48 @@ module.exports = (passport, user) => {
         passwordField: 'user_pass1',
         session: true,
         passReqToCallback: true
-    }, function(req, loginKey, password, done) {
-    	console.log(0);
+    }, function(req, userEmail, userPassword, done) {
         var userAlias = req.body.user_alias,
             names,
             errMessage;
         
-        if (!verify.isValidEmail(req.body.user_email)) {
-        	console.log(1);
+        if (!validate.isValidEmail(req.body.user_email)) {
             return done(null, false, req.flash('signupMsg','Invalid email address.'));
         }
-        
-        if (!verify.isValidUserAlias(userAlias)) {
-        	console.log(2);
+
+        if (!validate.isValidUserAlias(userAlias)) {
             return done(null, false, req.flash('signupMsg','Invalid alias.'));
         }
         
         //Passwords must match and be otherwise valid
-        if (errMessage = verify.evaluatePasswordInput(req.body.user_pass1, req.body.user_pass2)) {
-        	console.log(3);
+        if (errMessage = validate.evaluatePasswordInput(req.body.user_pass1, req.body.user_pass2)) {
         	return done(null, false, req.flash(null, false, req.flash('signupMsg',errMessage)));
         }
-        
+
         //Check database for existing user_key (in this case, an email address)/user alias
         User.findOne({
             where: {
                 [Sequelize.Op.or]: [
-                    { login_key:    loginKey }, 
+                    { user_email:   userEmail }, 
                     { user_alias:   req.body.user_alias }
                 ]
             }
         }).then((user) => {
             if (user) {
                 if (!(user.user_active || (user.last_login))) {
-                	console.log(4);
-                    return done(null, false, req.flash('signupMsg','Must activate account'));
+                    return done(null, false, req.flash('signupMsg', 'Must activate account'));
                 } else {
-                	console.log(5);
-                    return done(null, false, req.flash('signupMsg','User alias exists'));
+                    return done(null, false, req.flash('signupMsg', 'User alias exists'));
                 }
             } else {
                 //Format user entries for names (if any, as these fields are optional)
                 names = [req.body.user_firstname.trim(), 
                          req.body.user_lastname.trim()];
-
-                User.create(userData = {
+				console.log("email: " + userEmail);
+                User.create({
                         login_auth_type:    0,
-                        login_key:          loginKey,
-                        login_pass:         password,
+                        user_email:         userEmail,
+                        user_password:      userPassword,
                         user_alias:         userAlias,
                         last_login:         null,
                         user_info:          {   
@@ -258,33 +274,35 @@ module.exports = (passport, user) => {
                             }
                         },
                 }).then((newUser) => {
-                	console.log("hello");
                     if (newUser) {
                         mail.sendActivationEmail(req.app, { 
-                            recipientAddress: newUser.login_key, 
+                            recipientAddress: newUser.user_email, 
                             userName: newUser.user_alias, 
-                            url: jwt.sign( { data: newUser.id }, newUser.login_pass + "-" + newUser.account_created),
+                            url: jwt.sign( { data: newUser.id }, newUser.user_password + "-" + newUser.account_created),
                             id: newUser.id
                         }, (err, newURL) => {
+                        	console.log(1);
                             if (!newURL) {
-                            	console.log(6);
-                                return done(null, false, req.flash('signupMsg','Failed to send email.'));
+                            	console.log(2);
+                                return done(null, false, req.flash('signupMsg', 'Failed to send email.'));
                             }
                             
                             if (newURL) {
-                            	console.log(7);
+                            	console.log(3);
                                 console.log('User successfully added! ' + newUser.toString());
                                 return done(null, newUser);
                             }
-                        });                    
+                        });
                     }
                 }).catch((err) => {
-                	console.log(8);
-                    return done(null, false, req.flash('signupMsg','Failed to create new User.'));
+                	console.log(4);
+                    return done(null, false, req.flash('signupMsg', 'Failed to create new User.'));
                 });
             }
         }).catch((err) => {
-        	return done(null, false, req.flash('signupMsg','Hell if I know what this error means.'));
+        	
+        	console.log(5 + ", " + err);
+        	return done(null, false, req.flash('signupMsg', 'Hell if I know what this error means.'));
         });
     }));
 };

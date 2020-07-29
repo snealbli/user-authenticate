@@ -1,12 +1,12 @@
 /* ╔═════════════════════════════════════╦═════════════════════════╦═══════════╗
- * ║ user.js                             ║ Created:   30 Jan. 2020 ║ v1.0.0.9  ║
+ * ║ validate.js                         ║ Created:   30 Jan. 2020 ║ v1.0.1.0  ║
  * ║                                     ║ Last mod.: 24 Jul. 2020 ╚═══════════╣
  * ╠═════════════════════════════════════╩═════════════════════════════════════╣
  * ║ Description:                                                              ║
- * ║ A Node class for handling Users in MySQL using Sequelize.                 ║          
+ * ║ A class for validating user input (e.g. raw data submitted via forms).    ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣ 
  * ║ File(s):                                                                  ║
- * ║ /app/models/user.js                                                       ║
+ * ║ /app/config/validate.js                                                   ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║ For the latest version of field.js, to report a bug, or to contribute,    ║ 
  * ║ visit:     github.com/snealbli/nealblim.com                               ║
@@ -37,92 +37,24 @@
  */
 'use strict';
 
-const bCrypt            = require('bcrypt-nodejs');		//For password hashing
+const alias_regex = /^(?![_\d])(?!(.*(_)\1){2})\w{4,20}.*[^_]$/,
+      email_regex = /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/,
+      password_regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[A-Z])(?=.*[!@#$%^&*=|;:'/?.,\"\-\[\]\{\}\\\(\)\<\>\"]).{8,32}$/;
 
-module.exports = function(sequelize, Sequelize) {
-    var User = sequelize.define('user', {
-        id: {
-            type: Sequelize.INTEGER.UNSIGNED,
-            allowNull: false,
-            unique: true,
-            autoIncrement: true,
-            primaryKey: true
-        },
-        
-        user_email: {
-            type: Sequelize.STRING(64),
-            allowNull: true,
-            defaultValue: null
-        },
-        
-        user_password: {
-            type: Sequelize.STRING(64),
-            defaultValue: null,
-            get() {
-            	return this.getDataValue('user_password');
-            },
-            set(value) {
-                this.setDataValue('user_password', bCrypt.hashSync(value, bCrypt.genSaltSync(10), null))
-            },
-        },
+exports.isValidEmail = (email_address) => {
+	return email_regex.test(email_address);
+};
 
-        login_auth_type: {
-            type: Sequelize.TINYINT.UNSIGNED,
-            allowNull: false
-        },
-        
-        login_key_facebook: {
-        	type: Sequelize.STRING(64),
-        	allowNull: true,
-        	defaultValue: null
-        },
-        
-        user_alias: {
-            type: Sequelize.STRING(25),
-            allowNull: false,
-            unique: true,
-        },
-        
-        user_rank: {
-            type: Sequelize.TINYINT.UNSIGNED,
-            allowNull: false,
-            defaultValue: 0
-        },
- 
-        user_info: {
-            type: Sequelize.TEXT,
-            defaultValue: '{}',
-            get() {
-                return (
-                    JSON.parse(this.getDataValue('user_info'))
-                )
-              },
-            set(value) {
-                this.setDataValue('user_info', JSON.stringify(value))
-            },
-        },
-        
-        account_created: {
-            type: Sequelize.DATE,
-            defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
-            allowNull: false
-        },
-        
-        last_login: {
-            type: Sequelize.DATE
-        },
- 
-        user_active: {
-            type: Sequelize.BOOLEAN,
-            defaultValue: false
-        }
-    }, {
-        timestamps: false
-    });
+exports.evaluatePasswordInput = (password1, password2) => {
+    if (!password1.localeCompare(password2) === 0) {
+        return 'Passwords must match!';
+    } else if (!password_regex.test(password1))  {
+        return 'Invalid password!';
+    }
     
-    User.prototype.isCorrectPassword = function(password) {
-        return bCrypt.compareSync(password, this.user_password.toString());
-    };
-     
-    return User;
+    return null;
+};
+
+exports.isValidUserAlias = (user_alias) => {
+	return alias_regex.test(user_alias);
 };
