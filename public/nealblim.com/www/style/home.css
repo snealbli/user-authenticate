@@ -1,0 +1,165 @@
+@import url("./modal-form.css");
+
+html, 
+body,
+.app {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.app {
+	background-color:  #00275F;
+}
+
+.app-header {
+        height: 100vh;
+}
+
+.header-nav nav {
+	padding: 2% 3%
+}
+
+.header-nav {
+  	top: 0;
+}
+
+.vertical.menu {
+	background-color: transparent;
+}
+
+.vertical.menu a {
+	color: white;
+	font: 1.5em 'Fredoka One', cursive;	
+}
+
+.link-button {
+	outline: none;
+	text-decoration: none;
+}
+
+.link-button:active
+.link-button:hover,
+.link-button:link,
+.link-button:visited {
+	color:inherit;
+}
+
+#modal-form-user-auth {
+    -webkit-border-radius: 3.5rem 0 3.5rem 3.5rem;
+    -moz-border-radius: 3.5rem 0 3.5rem 3.5rem; 
+    border-radius: 3.5rem 0 3.5rem 3.5rem;
+    max-width: 380px;
+}
+
+#modal-form-user-auth .modal-window-banner {
+	background-image: url('../images/banner.jpg');
+	background-position: center;
+    background-repeat: no-repeat;
+    -webkit-border-radius: 3.5rem 3.5rem 0 0;
+    -moz-border-radius: 3.5rem 3.5rem 0 0; 
+    border-radius: 3.5rem 3.5rem 0 0;
+    padding-bottom: 62.5%;
+    width: 100%;
+}
+
+.modal-window-title h3 {
+	padding: 0.75rem 0 0;
+	text-align: center;
+}
+
+#modal-form-user-auth .modal-window-form,
+#modal-form-user-auth .modal-window-social-login h3,
+#modal-form-user-auth .modal-window-content-footer > div {
+    display: none;
+}
+
+hr.fancy-divider {
+    background-image: linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    border: none;
+    color: #333;
+    height: 1px;
+    margin: 0.8em 0;
+    overflow: visible; /* For IE */
+    text-align: center;
+}
+
+#modal-form-user-auth input {
+	margin-bottom: 0;
+}
+
+/**********************************************/
+.marketing-site-footer {
+  background: #2c3840;
+    color: #8aa0ae;
+    padding: 2rem 0 0;
+}
+
+.marketing-site-footer h4 {
+    color: #fefefe;
+    margin-bottom: 1rem;
+}
+
+.marketing-site-footer .marketing-site-footer-menu-social a {
+    color: #fefefe;
+}
+
+.marketing-site-footer-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.marketing-site-footer-contact .cell > div {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.marketing-site-footer-contact p {
+    line-height: 1.125rem;
+}
+
+.marketing-site-footer-contact .fa {
+    color: #020304;
+    font-size: 2rem;
+}
+
+.marketing-footer-top {
+    background: #2c3840;
+}
+
+.marketing-footer-bottom {
+    background: #020304;
+    padding: 1rem 0;
+}
+
+.marketing-site-footer-bottom .marketing-site-footer-bottom-links {
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 63.9375em) {
+    .marketing-site-footer-bottom .marketing-site-footer-bottom-links {
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+  }
+}
+
+@media screen and (max-width: 63.9375em) {
+    .marketing-site-footer-bottom {
+        text-align: center;
+    }
+}
+
+
+@media screen and (max-width: 39.9375em) {
+  .marketing-site-footer .columns {
+    margin-bottom: 2rem;
+  }
+}
