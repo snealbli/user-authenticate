@@ -1,12 +1,12 @@
 /* ╔═════════════════════════════════════╦═════════════════════════╦═══════════╗
  * ║ validate.js                         ║ Created:   30 Jan. 2020 ║ v1.0.0.0  ║
- * ║                                     ║ Last mod.: 24 Jul. 2020 ╚═══════════╣
+ * ║                                     ║ Last mod.: 30 Jul. 2020 ╚═══════════╣
  * ╠═════════════════════════════════════╩═════════════════════════════════════╣
  * ║ Description:                                                              ║
  * ║ A class for validating user input (e.g. raw data submitted via forms).    ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣ 
  * ║ File(s):                                                                  ║
- * ║ /app/config/validate.js                                                   ║
+ * ║ /app/config/validate.js ......................................... release ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║ For the latest version of field.js, to report a bug, or to contribute,    ║ 
  * ║ visit:     github.com/snealbli/nealblim.com                               ║
@@ -16,7 +16,7 @@
  * ║                                                                           ║
  * ║                          Site: nealblim.com                               ║
  * ║                                code.nealblim.com                          ║ 
- * ║                         Git:   github.com/snealbli                        ║
+ * ║                          Git:  github.com/snealbli                        ║
  * ║                     JSfiddle:  jsfiddle.net/user/teeer                    ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║ Copyright (C) 2020  Samuel Neal-Blim                                      ║
