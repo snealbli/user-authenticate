@@ -1,27 +1,27 @@
 /* ╔═════════════════════════════════════╦═════════════════════════╦═══════════╗
- * ║ temporaryURL.js                     ║ Created:   16 Mar. 2020 ║ v1.0.0.9  ║
- * ║                                     ║ Last mod.: 24 Jul. 2020 ╚═══════════╣ 
+ * ║ temporaryURL.js                     ║ Created:   16 Mar. 2020 ║ v1.0.0.0  ║
+ * ║                                     ║ Last mod.: 30 Jul. 2020 ╚═══════════╣
  * ╠═════════════════════════════════════╩═════════════════════════════════════╣
  * ║ Description:                                                              ║
  * ║ A class for handling the creation, deletion and other queries of          ║
- * ║ temporary URLs (i.e., URLs that expire either:                            ║ 
+ * ║ temporary URLs (i.e., URLs that expire either:                            ║
  * ║    a) after they are accessed once, or                                    ║
  * ║    b) after a set amount of time.                                         ║
  * ║ This is useful for email links that confirm a new user's email and        ║
  * ║ activate their account, or for resetting passwords.                       ║
- * ╠═══════════════════════════════════════════════════════════════════════════╣ 
- * ║ File(s):                                                                  ║
- * ║ /app/models/temporaryURL.js                                               ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
- * ║ For the latest version of field.js, to report a bug, or to contribute,    ║ 
+ * ║ File(s):                                                                  ║
+ * ║ /app/models/temporaryURL.js ..................................... release ║
+ * ╠═══════════════════════════════════════════════════════════════════════════╣
+ * ║ For the latest version of field.js, to report a bug, or to contribute,    ║
  * ║ visit:     github.com/snealbli/nealblim.com                               ║
  * ║    or:     code.nealblim.com/nealblim.com                                 ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║                         by Samuel "teer" Neal-Blim                        ║
  * ║                                                                           ║
  * ║                          Site: nealblim.com                               ║
- * ║                                code.nealblim.com                          ║ 
- * ║                         Git:   github.com/snealbli                        ║
+ * ║                                code.nealblim.com                          ║
+ * ║                          Git:  github.com/snealbli                        ║
  * ║                     JSfiddle:  jsfiddle.net/user/teeer                    ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║ Copyright (C) 2020  Samuel Neal-Blim                                      ║
