@@ -1,6 +1,6 @@
 /* ╔═════════════════════════════════════╦═════════════════════════╦═══════════╗
- * ║ passport.js                         ║ Created:   11 Mar. 2020 ║ v1.0.0.9  ║
- * ║                                     ║ Last mod.: 24 Jul. 2020 ╚═══════════╣
+ * ║ passport.js                         ║ Created:   11 Mar. 2020 ║ v1.0.0.0  ║
+ * ║                                     ║ Last mod.: 30 Jul. 2020 ╚═══════════╣
  * ╠═════════════════════════════════════╩═════════════════════════════════════╣
  * ║ Description:                                                              ║
  * ║ Contains strategies for user authentication via Passport.js, as well as   ║
@@ -9,7 +9,7 @@
  * ║ Coming soon: social media logins (Facebook, Twitter, Google, and more).   ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣ 
  * ║ File(s):                                                                  ║
- * ║ /app/config/passport.js                                                   ║
+ * ║ /app/config/passport.js ......................................... release ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║ For the latest version of field.js, to report a bug, or to contribute,    ║ 
  * ║ visit:     github.com/snealbli/nealblim.com                               ║
@@ -19,7 +19,7 @@
  * ║                                                                           ║
  * ║                          Site: nealblim.com                               ║
  * ║                                code.nealblim.com                          ║ 
- * ║                         Git:   github.com/snealbli                        ║
+ * ║                          Git:  github.com/snealbli                        ║
  * ║                     JSfiddle:  jsfiddle.net/user/teeer                    ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║ Copyright (C) 2020  Samuel Neal-Blim                                      ║
@@ -281,27 +281,21 @@ module.exports = (passport, user) => {
                             url: jwt.sign( { data: newUser.id }, newUser.user_password + "-" + newUser.account_created),
                             id: newUser.id
                         }, (err, newURL) => {
-                        	console.log(1);
                             if (!newURL) {
-                            	console.log(2);
                                 return done(null, false, req.flash('signupMsg', 'Failed to send email.'));
                             }
                             
                             if (newURL) {
-                            	console.log(3);
                                 console.log('User successfully added! ' + newUser.toString());
                                 return done(null, newUser);
                             }
                         });
                     }
                 }).catch((err) => {
-                	console.log(4);
                     return done(null, false, req.flash('signupMsg', 'Failed to create new User.'));
                 });
             }
         }).catch((err) => {
-        	
-        	console.log(5 + ", " + err);
         	return done(null, false, req.flash('signupMsg', 'Hell if I know what this error means.'));
         });
     }));
