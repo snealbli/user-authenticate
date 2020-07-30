@@ -1,14 +1,13 @@
 /* ╔═════════════════════════════════════╦═════════════════════════╦═══════════╗
- * ║ index.js                            ║ Created:   16 Dec. 2019 ║ v1.0.0.9  ║
- * ║                                     ║ Last mod.: 24 Jul. 2020 ╚═══════════╣
+ * ║ index.js                            ║ Created:   16 Dec. 2019 ║ v1.0.0.0  ║
+ * ║                                     ║ Last mod.: 30 Jul. 2020 ╚═══════════╣
  * ╠═════════════════════════════════════╩═════════════════════════════════════╣
  * ║ Description:                                                              ║
  * ║ Index class for loading model classes from the file system into           ║
- * ║ Sequelize.                                                                ║
- * ║ In this manner full  MySQL functionality can be implemented.              ║
+ * ║ Sequelize; in this manner full  MySQL functionality can be implemented.   ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣ 
  * ║ File(s):                                                                  ║
- * ║ /app/models/index.js                                                      ║
+ * ║ /app/models/index.js ............................................ release ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║ For the latest version of field.js, to report a bug, or to contribute,    ║ 
  * ║ visit:     github.com/snealbli/nealblim.com                               ║
@@ -18,7 +17,7 @@
  * ║                                                                           ║
  * ║                          Site: nealblim.com                               ║
  * ║                                code.nealblim.com                          ║ 
- * ║                         Git:   github.com/snealbli                        ║
+ * ║                          Git:  github.com/snealbli                        ║
  * ║                     JSfiddle:  jsfiddle.net/user/teeer                    ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║ Copyright (C) 2020  Samuel Neal-Blim                                      ║
