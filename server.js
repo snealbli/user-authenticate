@@ -6,18 +6,18 @@
  * ║ Entry point for the Nealblim.com user authorization service.              ║
  * ║ Used for authenticating users based on login credentials stored in a      ║
  * ║ MySQL (MariaDB) database, using Express, Passport, Sequelize (and more).  ║
- * ╠═══════════════════════════════════════════════════════════════════════════╣ 
+ * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║ File(s):                                                                  ║
  * ║ /app/models/server.js ........................................... release ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
- * ║ For the latest version of field.js, to report a bug, or to contribute,    ║ 
+ * ║ For the latest version of field.js, to report a bug, or to contribute,    ║
  * ║ visit:     github.com/snealbli/nealblim.com                               ║
  * ║    or:     code.nealblim.com/nealblim.com                                 ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║                         by Samuel 'teer' Neal-Blim                        ║
  * ║                                                                           ║
  * ║                          Site: nealblim.com                               ║
- * ║                                code.nealblim.com                          ║ 
+ * ║                                code.nealblim.com                          ║
  * ║                          Git:  github.com/snealbli                        ║
  * ║                     JSfiddle:  jsfiddle.net/user/teeer                    ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
@@ -37,7 +37,7 @@
  * ║ with this program.  If not, see https://www.gnu.org/licenses/gpl-3.0.html.║
  * ╚═══════════════════════════════════════════════════════════════════════════╝
  */
-
+'use strict'
 
 const express                = require('express'),
       expHandlebars          = require('express-handlebars'),
