@@ -1,23 +1,23 @@
 /* ╔═════════════════════════════════════╦═════════════════════════╦═══════════╗
- * ║ auth.js                             ║ Created:   11 Mar. 2020 ║ v1.0.0.9  ║
- * ║                                     ║ Last mod.: 24 Jul. 2020 ╚═══════════╣
+ * ║ auth.js                             ║ Created:   11 Mar. 2020 ║ v1.0.0.0  ║
+ * ║                                     ║ Last mod.: 30 Jul. 2020 ╚═══════════╣
  * ╠═════════════════════════════════════╩═════════════════════════════════════╣
  * ║ Description:                                                              ║
  * ║ Express.js routing for robot.nealblim.com.  User authentication is done   ║
  * ║ via passport.js.                                                          ║
- * ╠═══════════════════════════════════════════════════════════════════════════╣ 
- * ║ File(s):                                                                  ║
- * ║ /app/routes/auth.js                                                       ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
- * ║ For the latest version of field.js, to report a bug, or to contribute,    ║ 
+ * ║ File(s):                                                                  ║
+ * ║ /app/routes/auth.js ............................................. release ║
+ * ╠═══════════════════════════════════════════════════════════════════════════╣
+ * ║ For the latest version of field.js, to report a bug, or to contribute,    ║
  * ║ visit:     github.com/snealbli/nealblim.com                               ║
  * ║    or:     code.nealblim.com/nealblim.com                                 ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║                         by Samuel "teer" Neal-Blim                        ║
  * ║                                                                           ║
  * ║                          Site: nealblim.com                               ║
- * ║                                code.nealblim.com                          ║ 
- * ║                         Git:   github.com/snealbli                        ║
+ * ║                                code.nealblim.com                          ║
+ * ║                          Git:  github.com/snealbli                        ║
  * ║                     JSfiddle:  jsfiddle.net/user/teeer                    ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║ Copyright (C) 2020  Samuel Neal-Blim                                      ║
