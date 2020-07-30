@@ -1,6 +1,6 @@
 /* ╔═════════════════════════════════════╦═════════════════════════╦═══════════╗
- * ║ server.js                           ║ Created:   16 Dec. 2020 ║ v1.0.0.9  ║
- * ║                                     ║ Last mod.: 24 Jul. 2020 ╚═══════════╣
+ * ║ server.js                           ║ Created:   16 Dec. 2020 ║ v1.0.0.0  ║
+ * ║                                     ║ Last mod.: 30 Jul. 2020 ╚═══════════╣
  * ╠═════════════════════════════════════╩═════════════════════════════════════╣
  * ║ Description:                                                              ║
  * ║ Entry point for the Nealblim.com user authorization service.              ║
@@ -8,7 +8,7 @@
  * ║ MySQL (MariaDB) database, using Express, Passport, Sequelize (and more).  ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣ 
  * ║ File(s):                                                                  ║
- * ║ /app/models/server.js                                                     ║
+ * ║ /app/models/server.js ........................................... release ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║ For the latest version of field.js, to report a bug, or to contribute,    ║ 
  * ║ visit:     github.com/snealbli/nealblim.com                               ║
@@ -18,7 +18,7 @@
  * ║                                                                           ║
  * ║                          Site: nealblim.com                               ║
  * ║                                code.nealblim.com                          ║ 
- * ║                         Git:   github.com/snealbli                        ║
+ * ║                          Git:  github.com/snealbli                        ║
  * ║                     JSfiddle:  jsfiddle.net/user/teeer                    ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║ Copyright (C) 2020  Samuel Neal-Blim                                      ║
@@ -37,6 +37,8 @@
  * ║ with this program.  If not, see https://www.gnu.org/licenses/gpl-3.0.html.║
  * ╚═══════════════════════════════════════════════════════════════════════════╝
  */
+
+
 const express                = require('express'),
       expHandlebars          = require('express-handlebars'),
       session                = require('express-session'),
