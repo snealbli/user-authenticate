@@ -1,6 +1,6 @@
 /* ╔═════════════════════════════════════╦═════════════════════════╦═══════════╗
- * ║ rank.js                             ║ Created:   30 Jan. 2020 ║ v1.0.0.9  ║
- * ║                                     ║ Last mod.: 24 Jul. 2020 ╚═══════════╣
+ * ║ rank.js                             ║ Created:   30 Jan. 2020 ║ v1.0.0.0  ║
+ * ║                                     ║ Last mod.: 30 Jul. 2020 ╚═══════════╣
  * ╠═════════════════════════════════════╩═════════════════════════════════════╣
  * ║ Description:                                                              ║
  * ║ A Node class for utilizing entries from the Rank table in MySQL using     ║
@@ -9,7 +9,7 @@
  * ║ access, forum, administration, and many other privileges.                 ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣ 
  * ║ File(s):                                                                  ║
- * ║ /app/models/rank.js                                                       ║
+ * ║ /app/models/rank.js ............................................. release ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║ For the latest version of field.js, to report a bug, or to contribute,    ║ 
  * ║ visit:     github.com/snealbli/nealblim.com                               ║
@@ -19,7 +19,7 @@
  * ║                                                                           ║
  * ║                          Site: nealblim.com                               ║
  * ║                                code.nealblim.com                          ║ 
- * ║                         Git:   github.com/snealbli                        ║
+ * ║                          Git:  github.com/snealbli                        ║
  * ║                     JSfiddle:  jsfiddle.net/user/teeer                    ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║ Copyright (C) 2020  Samuel Neal-Blim                                      ║
