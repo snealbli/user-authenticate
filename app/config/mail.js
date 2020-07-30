@@ -1,6 +1,6 @@
 /* ╔═════════════════════════════════════╦═════════════════════════╦═══════════╗
- * ║ mail.js                             ║ Created:    1 Apr. 2020 ║ v1.0.0.9  ║
- * ║                                     ║ Last mod.: 24 Jul. 2020 ╚═══════════╣
+ * ║ mail.js                             ║ Created:    1 Apr. 2020 ║ v1.0.0.0  ║
+ * ║                                     ║ Last mod.: 30 Jul. 2020 ╚═══════════╣
  * ╠═════════════════════════════════════╩═════════════════════════════════════╣
  * ║ Description:                                                              ║
  * ║ Using nodemailer and JSON web token, will generate and send emails.       ║
