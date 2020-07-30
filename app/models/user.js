@@ -1,22 +1,22 @@
 /* ╔═════════════════════════════════════╦═════════════════════════╦═══════════╗
- * ║ user.js                             ║ Created:   30 Jan. 2020 ║ v1.0.0.9  ║
- * ║                                     ║ Last mod.: 24 Jul. 2020 ╚═══════════╣
+ * ║ user.js                             ║ Created:   30 Jan. 2020 ║ v1.0.0.0  ║
+ * ║                                     ║ Last mod.: 30 Jul. 2020 ╚═══════════╣
  * ╠═════════════════════════════════════╩═════════════════════════════════════╣
  * ║ Description:                                                              ║
- * ║ A Node class for handling Users in MySQL using Sequelize.                 ║          
- * ╠═══════════════════════════════════════════════════════════════════════════╣ 
- * ║ File(s):                                                                  ║
- * ║ /app/models/user.js                                                       ║
+ * ║ A Node class for handling Users in MySQL using Sequelize.                 ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
- * ║ For the latest version of field.js, to report a bug, or to contribute,    ║ 
+ * ║ File(s):                                                                  ║
+ * ║ /app/models/user.js ............................................. release ║
+ * ╠═══════════════════════════════════════════════════════════════════════════╣
+ * ║ For the latest version of field.js, to report a bug, or to contribute,    ║
  * ║ visit:     github.com/snealbli/nealblim.com                               ║
  * ║    or:     code.nealblim.com/nealblim.com                                 ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║                         by Samuel "teer" Neal-Blim                        ║
  * ║                                                                           ║
  * ║                          Site: nealblim.com                               ║
- * ║                                code.nealblim.com                          ║ 
- * ║                         Git:   github.com/snealbli                        ║
+ * ║                                code.nealblim.com                          ║
+ * ║                          Git:  github.com/snealbli                        ║
  * ║                     JSfiddle:  jsfiddle.net/user/teeer                    ║
  * ╠═══════════════════════════════════════════════════════════════════════════╣
  * ║ Copyright (C) 2020  Samuel Neal-Blim                                      ║
